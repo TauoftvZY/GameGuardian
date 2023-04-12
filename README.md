@@ -5,7 +5,7 @@
 
 去除并精简了一些的多余的UI界面。
 
-演示视频可以去我的YT中查看：https://www.youtube.com/watch?v=FWTwyV3dYmI&t=2s
+演示视频可以去YT中查看：https://www.youtube.com/watch?v=FWTwyV3dYmI&t=2s
 
 ![QQ图片20230412175224](https://user-images.githubusercontent.com/113875754/231422683-e8a581b0-8a1c-4f4c-8c51-ecefda956fb4.jpg)
 ![QQ图片20230412175236](https://user-images.githubusercontent.com/113875754/231422693-5064cb98-bb84-49af-ac3b-6bf322464520.jpg)
