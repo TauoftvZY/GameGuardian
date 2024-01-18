@@ -8,7 +8,7 @@ main_land.xml --主页横屏时显示
 main_port.xml --主页竖屏时显示
 
 
-已添加函数 (250)
+已添加函数 (266)
     image() --播放图片源。 用法：image("图片源") 示例：一.image("https://feeds-drcn.dbankcdn.com/web/1051069525419073/image/3aa0084047b420280dd148cf70eed7c5966692ee_w1479_h714") 二.image("/sdcard/test.png")
     import() --导包操作，仅支持云端。 用法：import("网址")
     threadPcall() --线程调试。(注意：可传入function，数据可共享)。
@@ -285,6 +285,37 @@ main_port.xml --主页竖屏时显示
         tools.trimDirPath() --去除字符串末尾/符号。 用法：tools.trimDirPath("字符串") 示例：print(tools.trimDirPath("/hello/word/"))
         tools.tryRoot() --尝试获取Root权限。 用法：tools.tryRoot() 示例：print(tools.tryRoot())
     ]
+    ToastLib:[
+        ['black'] = toast.black(obj)黑色的消息提示，局部生效。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['cancel'] = toast.cancel()取消所有消息提示，全局生效,
+        ['crossPage'] = toast.crossPage(obj)跨页面消息提示，将优先使用系统自带消息样式。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['delay'] = toast.delay(obj,time)延时消息提示，消息样式为默认样式。传入两个参数。第一个参数支持string、其他继承CharSequence的字符序列、其他Object
+            第二个参数为延迟时间，单位为毫秒,
+        ['diyShow'] = toast.diyShow(view,text,isGlobals,gravity,xoffset,yoffset,horizontalMargin,verticalMargin)自定义View消息提示，全局或局部生效。
+            view为自定义的布局，View类型，为必传内容，View布局内必须包含一个TextView,这个TextView必须拥有Id=0x0102000b;的Id设置
+            text为消息内容，String类型，不传时消息内容由view决定
+            isGlobals是否设置为全局toast都用这个布局，boolean类型，true为全局，false为局部，不传时默认true
+            gravity为显示重心，int类型，不传时默认为Gravity.CENTER
+            xoffset相对于重心位置的水平（屏幕x轴方向）偏移，int类型，不传时默认为0
+            yoffset相对于重心位置的垂直偏移，int类型，不传时默认为0
+            horizontalMargin水平间距，float类型，不传时默认为0
+            verticalMargin垂直间距，float类型，不传时默认为0,
+        ['error'] = toast.error(obj)错误提示，局部生效。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['hint'] = toast.hint(obj)小提示，局部生效。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['setGravity'] = toast.setGravity(gravity,xoffset,yoffset,horizontalMargin,verticalMargin)设置一个全局生效的消息显示位置。            gravity为显示重心，int类型，不传时默认为Gravity.CENTER
+            xoffset相对于重心位置的水平（屏幕x轴方向）偏移，int类型，不传时默认为0
+            yoffset相对于重心位置的垂直偏移，int类型，不传时默认为0
+            horizontalMargin水平间距，float类型，不传时默认为0
+            verticalMargin垂直间距，float类型，不传时默认为0,
+        ['setMode'] = toast.setMode(int mode)切换消息显示模式，全局生效。传入1表示为队列消息显示模式，消息将挨个排队显示；传入0表示即时消息，只显示最新的一个,
+        ['setStyle'] = toast.setStyle(style)设置一个全局生效的消息样式，style为IToastStyle类型或其子类,
+        ['show'] = toast.show(obj)消息提示，消息停留时间由显示的消息长短自动判断，消息样式为默认样式。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['showLong'] = toast.showLong(obj)长时消息提示，停留时间长，消息样式为默认样式。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['showShort'] = toast.showShort(obj)短时消息提示，停留时间短，消息样式为默认样式。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['success'] = toast.success(obj)成功提示，正确提示，局部生效。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['warn'] = toast.warn(obj)警告提示，局部生效。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['white'] = toast.white(obj)白色的消息提示，局部生效。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+    ]
 
 已移植函数 (1)
     gg.searchPointer()
@@ -294,7 +325,7 @@ main_port.xml --主页竖屏时显示
     debug.setuservalue()
     os.execute()
 
-已添加库 (9)
+已添加库 (10)
     Luajava
     Coroutine
     File
@@ -304,3 +335,4 @@ main_port.xml --主页竖屏时显示
     getPhoneInfo
     ToolsLib
     Stack
+    Toast
