@@ -1,0 +1,400 @@
+资源文件：
+res/drawable/modified_background.xml --悬浮窗界面背景颜色(黑渐变白)
+res/drawable/modified_button.xml --局部按钮颜色(橙色)
+res/drawable/modified_popup.xml --局部弹窗颜色(右上红渐变左下蓝)
+res/drawable/transparent_button.xml --局部按钮颜色(白边框透明底色)
+res/layout/hover_icon_refresh.xml --悬浮窗图标刷新
+main_land.xml --主页横屏时显示
+main_port.xml --主页竖屏时显示
+
+
+已添加函数 (320)
+    image() --播放图片源。 用法：image("图片源") 示例：一.image("https://feeds-drcn.dbankcdn.com/web/1051069525419073/image/3aa0084047b420280dd148cf70eed7c5966692ee_w1479_h714") 二.image("/sdcard/test.png")
+    import() --导包操作，仅支持云端。 用法：import("网址")
+    threadPcall() --线程调试。(注意：可传入function，数据可共享)。
+    setScreenshots() --屏幕截取权限。 用法：setScreenshots(真假值) 示例：一.setScreenshots(true) 二.setScreenshots(false)
+    equals() --深度对比表。 用法：equals({字符},{字符}) 示例：print(equals({1,2,3,4,5},{1,2,3,4,5}))
+    gg.appPath() --取已安装App的私有App路径。 用法：gg.appPath("包名") 示例：print(gg.appPath("com.android.settings"))
+    gg.exit() --true退出或false重启GG，不传入参数默认为true值。 用法：一.gg.exit() 二.gg.exit(false)
+    gg.codeScript() --创建线程执行脚本。 用法：gg.codeScript("Lua文件") 示例：gg.codeScript("/sdcard/test.lua")
+    gg.isVPN() --取机身系统VPN连接状态。 用法：gg.isVPN() 示例：print(gg.isVPN())
+    gg.isHTTPdump() --通过网络判断是否处于抓包状态。 用法：gg.isHTTPdump() 示例：print(gg.isHTTPdump())
+    gg.jumpAPP() --运行APP。 用法：gg.jumpAPP("包名") 示例：gg.jumpAPP("com.android.settings")
+    gg.intent() --意图操作，可以执行转跳到网址、QQ资料窗，等多种操作。 用法：gg.intent("代码") 示例：一.gg.intent("http://www.baidu.com/") 二.gg.intent("mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=1409330588")
+    gg.gotoBrowser() --转跳到系统默认浏览器。 用法：gg.gotoBrowser("网址") 示例：gg.gotoBrowser("http://www.baidu.com/")
+    gg.goURL() --转跳到网址。 用法：gg.goURL("网址") 示例：gg.goURL("http://www.baidu.com/")
+    gg.QQchat() --转跳到QQ账号聊天窗。 用法：gg.QQchat("QQ账号") 示例：gg.QQchat("1409330588")
+    gg.QQgroup() --转跳到QQ群号资料窗。 用法：gg.QQgroup("QQ群号") 示例：gg.QQgroup("959636476")
+    gg.colorAlert() --彩色弹窗，标题、文本、按钮均可按照html格式设置彩色文字。 用法：gg.colorAlert("标题","内容","按钮","按钮","按钮") 示例：gg.colorAlert("<font color='#70f3ff'>title</font>","<font color='#FFFF00'>Test</font>","积极按钮","消极按钮","中立按钮")
+    gg.colorToast() --彩色消息提示，可按html格式设置彩色文字。 用法：gg.colorToast("内容") 示例：gg.colorToast("<font color='#78AF0101'>Test</font>")
+    gg.diyToast() --自定义彩色消息提示。 用法：gg.diyToast("文字",背景颜色值,字体颜色值,文字大小值,文字位置值) 示例：gg.diyToast("Test\nyes",0xffff006e,0xffffffff,50)
+    gg.playMusic() --播放音源。 用法：gg.playMusic("音源") 示例：一.gg.playMusic("http://ivi.bupt.edu.cn/hls/cctv1.m3u8") 二.gg.playMusic("/sdcard/test.m4a") 三.gg.playMusic("stop") 四.gg.playMusic("pause") 五.gg.playMusic("start")
+    gg.playVideo() --播放视频源。 用法：gg.playVideo("视频源") 示例：一.gg.playVideo("http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8") 二.gg.playVideo("/sdcard/test.mp4")
+    gg.ETD() --将E类型值转换成D类型。
+    gg.FTD() --将F类型值转换成D类型。
+    gg.WTD() --将W类型值转换成D类型。
+    gg.XTD() --将X类型值转换成D类型。
+    gg.sumAddress() --偏移量计算器(与gg的偏移量计算器相似)。
+    gg.sumAddressX() --地址偏移。
+    gg.searchPointerX() --指针搜索。
+    gg.gotoPointer() --指针跳转。
+    gg.execSQL() --执行insert、delete、update和CREATE TABLE之类有更改行为的SQL语句。 例子：gg.execSQL("/sdcard/1.db","insert into storage (name,password,qq,id) values('DM','1038927421','3147359496','1')")
+    gg.querySQL() --SQL数据库管理。 用法：gg.querySQL(file,sql,id) 例子：gg.querySQL("/sdcard/1.db","create table storage(name text,password text,qq text,id text)")
+    gg.shell() --执行shell命令。 示例：print(gg.shell("uptime -s"))
+    gg.command() --执行command命令。 示例：print(gg.command("uptime -s"))
+    gg.getRangesList() --优化基于GG官方gg.getRangesList函数，address，internalName，end，start，type，state等均可作为过滤条件。 用法：gg.getRangesList("内存范围","内存类型","进程文件") 示例：print(gg.getRangesList({internalName = '^/data/*lib*.so$',state = 'Ca',type = 'rw'}))
+    gg.getConfig() --获取GG配置。 用法：gg.getConfig() 示例：一.print(gg.getConfig()) 二.print(gg.getConfig(2131427463))
+    gg.setConfig() --设置GG配置。 用法：gg.setConfig(id, value) 示例：print(gg.setConfig(2131427463, 2|4))
+    gg.getProcess() --获取进程。 用法：gg.getProcess() 示例：print(gg.getProcess())
+    gg.setProcess() --设置进程。 用法：gg.setProcess("包名") 示例：gg.setProcess("com.android.systemui")
+    gg.setProcessX() --设置进程(注意：只是调出选择窗)。 用法：gg.setProcessX() 示例：gg.setProcessX()
+    gg.getWindowOrientation() --获取机身横竖屏状态。 用法：gg.getWindowOrientation() 示例：print(gg.getWindowOrientation())
+    gg.getSign --获取GG签名MD5值。 用法：gg.getSign 示例：print(gg.getSign)
+    gg.getSignatures() --获取GG签名公钥值。 用法：gg.getSignatures() 示例：print(gg.getSignatures())
+    gg.getRaw() --复制GG的raw资源。
+    gg.ExclusiveoutputG() --将搜索结果保存到文件中。 用法：print(gg.ExclusiveoutputG("/sdcard/gg_output.txt"))
+    gg.searchChoice() --搜索对话框。 用法：gg.searchChoice({字符},"标题") 示例：gg.searchChoice({"number1","number2","number3"},"test")
+    gg.getAdressString() --获取内存地址处的字符串值。 用法：gg.getAdressString(地址,偏移) 示例：print(gg.getAdressString("0xC0D97D18","0x8"))
+    gg.getAdressJavaString() --获取指定Java字符串对象的值。 用法：gg.getAdressJavaString(地址,偏移) 示例：print(gg.getAdressJavaString("0xC0D301AC","0x4"))
+    gg.getAddressUTF() --按地址长度读取字符串函数。 示例：一.print(gg.getAddressUTF(0xBA341DC0, 5)) 二.print(gg.getAddressUTF(0xBA341DC0, 2048, "UTF-16LE"))
+    gg.getUTF() --获取连续地址中的字符串表达式。 示例：一.print(gg.getUTF("HEX",2)) 二.print(gg.getUTF("HEX+UTF-8",gg.getResults(10)))
+    gg.getProcessInfo() --获取进程详细信息。 用法：gg.getProcessInfo(传cmdLine) 示例：print(gg.getProcessInfo(gg.getProcess()[1]['cmdLine']))
+    gg.getAppInfo() --获取进程详细信息()。 用法：gg.getAppInfo(传cmdLine) 示例：print(gg.getAppInfo(gg.getProcess()[1]['cmdLine']))
+    gg.offsetString()
+    gg.offsetJavaString()
+    string.bytes() --字节型转字符串。 用法：string.bytes(字节值,"编码格式") 示例：print(string.bytes({[1]=84,[2]=0,[3]=101,[4]=0,[5]=115,[6]=0,[7]=116,[8]=0},"UTF-16LE"))
+    string.AES() --AES加密与解密。 用法：string.AES("字符","16位密钥","模式") 示例：一.print(string.AES("GG养佬院","d5?;,.)(j+=@<>/&","en")) 二.print(string.AES("A082F9228BF1B941A20B273C7B6FE2B4","d5?;,.)(j+=@<>/&","de"))
+    string.RC4() --RC4加密与解密。 用法：string.RC4("字符","密钥","模式") 示例：一.print(string.RC4("GG养佬院","d5?;,.)(j+=@<>/&","en")) 二.print(string.RC4("DA5BB3FC4ABEACF0","d5?;,.)(j+=@<>/&","de"))
+    string.baseCode() --Base64加密与解密。 用法：string.baseCode("字符","模式") 示例：一.print(string.baseCode("Test","en")) 一.print(string.baseCode("VGVzdA==","de"))
+    string.urlCode() --url编码加密与解密。 用法：string.urlCode("字符","模式") 示例：一.print(string.urlCode("测试","en")) 一.print(string.urlCode("%E6%B5%8B%E8%AF%95","de"))
+    string.decBin() --十进制转二进制(注意：支持补位)。
+    string.binDec() --二进制转十进制。
+    string.getUID() --不同机身取固定长度随机的字符串。 用法：string.getUID() 示例：print(string.getUID())
+    string.getHash() --获取字符串的哈希值。 用法：string.getHash("字符") 示例：print(string.getHash("Hello World"))
+    string.getMD() --生成散列码，支持MD5、SHA、SHA1、SHA256、SHA384、SHA512。 用法：一.string.getMD("字符", "编码格式", "算法名") 二.string.getMD("文件", "算法名") 示例：一.print(string.getMD("测试Test","UTF-8","MD5")) 二.print(string.getMD("/sdcard/test.txt","SHA"))
+    string.similarity() --对比字符相似度。 用法：string.similarity("字符","字符") 示例：print(string.similarity("GG养佬院","养老院"))
+    string.split() --字符串分割。 用法：string.split("字符","字符") 示例：string.split("123;2488;283",";")
+    string.equals() --判断两个字符串是否相等,无视大小写。 示例：print(string.equals("world","World"))
+    string.compare() --比较两个字符串的大小关系。 示例：print(string.compare("hello","world"))
+    string.trim() --去掉字符串两端的空格字符。 示例：print("|"..string.trim("     Hello World     ").."|")
+    string.isDigit() --判断是否只由数字组成。 示例：print(string.isDigit("11"))
+    string.toCharArray() --字符串转字符数组。 示例：print(string.toCharArray("GG养佬院"))
+    string.setCharAt() --修改指定位置后的字符。 示例：print(string.setCharAt("hello world",4,"nh"))
+    string.isUpper() --判断是否全部为大写字母。 示例：print(string.isUpper("FD")) 
+    string.intern() --返回字符串的规范化表示形式。 示例：print(string.intern("hello"))
+    string.insert() --将指定内容插入到原文本中的指定位置的后面。 示例：print(string.insert("hello world",5,"你好"))
+    string.toLower()
+    string.toUpper()
+    string.hashCode() --获取字符串的哈希值。 示例：print(string.hashCode("hello"))
+    string.startsWith() --匹配字符串开头字符。 用法：print(string.startsWith("1kllo","1"))
+    string.endsWith() --匹配字符串末尾字符。 示例：print(string.endsWith("hello","o"))
+    string.newString() --将字节数组转字符串。 示例：print(string.newString({72,101,108,108,111},"UTF-8"))
+    string.delet() --删除区间字符。 示例：print(string.delet("Hello, World!",5,7))
+    string.isLower() --判断是否全部为小写字母。 示例：print(string.isLower("hh"))
+    string.isLetter() --判断是否只由字母组成。 示例：print(string.isLetter("FD"))
+    string.replace() --将指定内容替换为新的内容。 示例：print(string.replace("hello","l","L"))
+    string.charset() --字符集转码。 用法：string.charset("字符串","编码类型") 示例：print(string.charset("hello","GB2312"))
+    string.jsonFormat() --格式化json，
+    table.json() --json转table。
+    table.getn() --取table实际长度。 用法：table.getn({值}) 示例：table.getn({[{}]=3,a=1,b=2,nil,3,5,7,50})
+    table.MaxN:[ --查找table中最大数。
+        table.MaxN().M 用法：table.MaxN({字符}).M 示例：print("最大值:"..table.MaxN({1,1,2,223,4,5,6,7,8,2,3,4,5,2,9,10,34,5,6,}).M)
+        table.MaxN().N 用法：table.MaxN({字符}).N 示例：print("最大值的位置:"..table.MaxN({1,1,2,223,4,5,6,7,8,2,3,4,5,2,9,10,34,5,6,}).N)
+    ]
+    table.removeRepetition() --table重复元素删除。 用法：table.removeRepetition({字符}) 示例：print(table.removeRepetition({"ushd",1,3,8,5,4,23345,1,2,3,2,2,3,2,2,2,2,2,2,2,3,{1,2,3},{"tyyy","uggh"},{1,2,3}}))
+    table.AllPermutation() --获取所有排列组合。 示例：print(table.AllPermutation({1,3,5,4,2},true))
+    table.hasK() -判断表t内是否存在以k为键的元素（后面可传入多个k)
+    table.hasV() -判断表t内是否存在以v为值的元素（后面可传入多个v)
+    table.swapKV() -将表t内的键和值交换（key<=>value），原来的键作为值，原来的值作为新值的键，得到一个新表
+    table.vgetK() -根据值v，从表t中查找值为v的所有元素，并返回这些元素所对应的键。
+    math.gcd() --计算最大公约数。 示例：print(math.gcd(12,36))
+    File:[
+        file.check() --判断文件种类(结果：0为路径或文件不存在、1为文件、2为文件夹)。 用法：file.check("文件") 示例：print(file.check("/sdcard"))
+        file.chmod() --更改文件读、写、执行权限。 用法：file.chmod("文件","八进制权限码") 示例：print(file.chmod("/sdcard/test.lua","777"))
+        file.copy() --从路径1拷贝文件到路径2，当路径2的父目录不存在时会创建父目录。 用法：file.copy("路径","路径") 示例：file.copy("/sdcard/test.lua","/sdcard/test2.lua")
+        file.create() --创建文件或文件夹。 用法：file.create("路径") 示例：file.create("/sdcard/test")
+        file.delete() --按规则删除文件(参数三可不输入，当参数二模式传入为file.TYPE_CHILD时参数三则会是深度)。 用法：file.delete("路径",模式,"正则表达式或深度") 示例：一.file.delete("/sdcard/test", file.TYPE_ALL) 二.file.delete("/sdcard/test/", file.TYPE_FILE) 三.file.delete("/sdcard/test/", file.TYPE_DIR) 四.file.delete("/sdcard/test/", file.TYPE_PATH_ENDS, ".txt.xxx.lua") 五.file.delete("/sdcard/test/", file.TYPE_NAME_ENDS, "lua") 六.file.delete("/sdcard/test/", file.TYPE_NAME_STARTS, "xxx") 七.file.delete("/sdcard/test/", file.TYPE_CHILD, 4)
+        file.download() --下载网址文件(header可以不填)。 用法：file.download("网址文件","存储文件","header") 示例：print(file.download("http://baidu.com/index.html","/sdcard/baidu.html"))
+        file.exists() --判断文件是否存在。 用法：file.exists("文件") 示例：print(file.exists("/sdcard"))
+        file.isdir() --判断是不是文件夹。 用法：file.isdir("文件") 示例：print(file.isdir("/sdcard"))
+        file.isfile() --判断是不是文件。 用法：file.isfile("文件") 示例：print(file.isfile("/sdcard/test.lua"))
+        file.lastTime() --获取文件最新修改日期。 用法：file.lastTime("文件") 示例：print(file.lastTime("/sdcard/test.lua"))
+        file.list() --按规则遍历文件(参数三可不输入，当参数二模式传入为file.TYPE_CHILD时参数三则会是深度)。 用法：file.list("路径",模式,"正则表达式或深度") 示例：一.file.list("/sdcard", file.TYPE_ALL) 二.file.list("/sdcard/", file.TYPE_FILE) 三.file.list("/sdcard/", file.TYPE_DIR) 四.file.list("/sdcard/", file.TYPE_PATH_ENDS, ".txt.xxx.lua") 五.file.list("/sdcard/MT2/apks/", file.TYPE_NAME_ENDS, "lua") 六.file.list("/sdcard/MT2/apks/", file.TYPE_NAME_STARTS, "xxx") 七.file.list("/sdcard/", file.TYPE_CHILD, 4)
+        file.mkdirs() --多级文件夹创建。 用法：file.mkdirs("路径") 示例：print(file.mkdirs("/sdcard/测试/Test"))
+        file.name() --获取文件的名。 用法：file.name("路径") 示例：print(file.name("/sdcard/test.lua"))
+        file.parent() --获取文件的父路径。 用法：file.parent("路径") 示例：print(file.parent("/sdcard/test.lua"))
+        file.read() --读取文件的全部内容。 用法：file.read("路径") 示例：print(file.read("/sdcard/test.lua"))
+        file.rename() --文件重命名或移动。 用法：file.rename("路径","路径") 示例：file.rename("/sdcard/test.lua","/sdcard/test2.lua")
+        file.size() --获取文件或者文件夹大小。 用法：file.size("路径") 示例：print(file.size("/sdcard/test.lua"))
+        file.split() --文件分割成多份。 用法：file.split("文件"，份数) 示例：print(file.split("/sdcard/test.lua",2))
+        file.sub() --路径截取(注意：截取数值是以/号为准)。 用法：file.sub("字符",开始截取数值,结算截取数值) 示例：一.print(file.sub("/sdcard/Test/测试.txt",1,2)) 二.print(file.sub("/sdcard/Test/测试.txt",2)) 三.print(file.sub("/sdcard/Test/测试.txt",2,3))
+        file.suf() --截取文件拓展名。 示例：print(file.suf("/sdcard/test.lua"))
+        file.write() --向文件写入内容。 用法：file.write("路径","字符") 示例：print(file.write("/sdcard/test.lua","test"))
+        file.zip() --压缩与解压zip文件。 用法：一.file.zip(被压缩文件路径,压缩文件路径,"zip") 二.file.zip(被解压文件路径,解压后路径,密码,"unzip") 示例：一.print(file.zip("/sdcard/test.txt","/sdcard/test.zip","password","zip")) 二.print(file.zip("/sdcard/test.zip","/sdcard/测试/test.txt","password","unzip"))
+        file.exec() --执行终端命令，第三个参数是是否su模式。 用法：file.exec("命令名","参数",真假值) 示例：file.exec("touch","/sdcard/test",true)
+    ]
+    APP:[
+        app.apk --获取前修改器的apk文件路径。 示例：print(app.apk)
+        app.cache --获取当前修改器的Android/data/包名/cache路径。 示例：print(apk.cache)
+        app.cacheHidden --当前修改器在/data/user/或者/data/data/目录下cache文件中创建的GG-文件夹。 示例：print(apk.cacheHidden)
+        app.dataCache --当前修改器的/data/user/下的cache目录。 示例：print(apk.dataCache)
+        app.dataFiles --当前修改器的/data/user/下的files目录。 示例：print(apk.dataFiles)
+        app.databases --当前修改器的/data/user/下的databases目录。 示例：print(apk.databases)
+        app.files --当前修改器的/Android/data/下的files目录。 示例：print(apk.files)
+        app.filesHidden --当前修改器在/data/user/下files目录中创建的GG-文件夹。 示例：print(apk.filesHidden)
+        app.hidden --当前修改器创建的GG-文件夹的名字。 示例：print(apk.hidden)
+        app.name --获取当前修改器的应用包名。 示例：print(apk.name)
+        app.obb --获取修改器的/Android/obb目录。 示例：print(apk.obb)
+    ]
+    Luajava:[
+        luajava.astable() --将Java对象转换为Lua表。
+        luajava.bindClass() --绑定Java类。
+        luajava.castOf() --将Java对象转换为指定类型。
+        luajava.createProxy() --创建Java接口的代理对象。
+        luajava.instanceOf() --判断对象是否为指定类型的实例。
+        luajava.loadLib() --加载第三方库。
+        luajava.loadDex() --加载Dex文件。
+        luajava.methods() --获取Java类的所有方法。
+        luajava.getMethods() --获取Java类的公共方法。
+        luajava.new() --实例化Java类。
+        luajava.newInstance --通过构造函数创建Java对象。 用法：luajava.newInstance(类名全称,[构造方法参数(可变参数)])
+        luajava.toArray() --将Lua表转换为Java数组。
+    ]
+    MOD:[
+        javac()
+        todex()
+        luajava.ids --print(luajava.ids)
+        package.path --print(package.path)
+        luajava.jarpath --print(luajava.jarpath)
+        luajava.logpath --print(luajava.logpath)
+        luajava.classpath --print(luajava.classpath)
+        luajava.methodProxy()
+        instanceof()
+        loadbitmap()
+        loaddrawable()
+        compile()
+        import
+        gc()
+        copyFile()
+        context --print(context)
+        activity --print(activity)
+        string.random() --print(string.random())
+        loadXml()
+        Lock.Log()
+        Lock.Main()
+        Lock.Ui()
+        Lock.Write()
+        Lock.unLog()
+        Lock.unMain()
+        Lock.unUi()
+        Lock.unWrite()
+    ]
+    Stack:[ --多线程可共享
+        stack.clearAll() --清除所有的内容或状态。
+        stack.currentThread() --获取当前执行的线程。
+        stack.deleteGlobals() --删除全局变量。
+        stack.getGlobals() --获取全局变量的值。
+        stack.getScriptThread() --获取脚本的线程。
+        stack.getState() --获取脚本或线程的状态。
+        stack.getValue() --获取某个值或变量的值。
+        stack.interrupt() --中断当前线程的执行。
+        stack.isAlive() --检查线程是否活动(即是否在运行)。
+        stack.isInterrupted() --检查线程是否被中断。
+        stack.isable() --检查某个功能或选项是否启用或可用。
+        stack.isempty() --检查某个容器或数据结构是否为空。
+        stack.newGlobalsStack() --创建新的全局变量栈。
+        stack.newScriptMap() --创建新的脚本映射。
+        stack.run() --运行脚本或线程。
+        stack.setGlobals() --设置全局变量的值。
+        stack.setValue() --设置某个值或变量的值。
+        stack.tostring() --将对象转换为字符串表示形式。
+    ]
+    Coroutine:[ --协程。
+        coroutine.create() --创建新线程。
+        coroutine.resume() --开始或继续线程。
+        coroutine.running() --检测线程是否在运行。
+        coroutine.status() --线程状态。
+        coroutine.wrap() --创建新线程(注意：每次调用即为线程延续)。
+        coroutine.yield() --挂起线程。
+    ]
+    DEX:[ --dex操作。
+        dex.loadDex() --载入dex文件(注意：载入成果返回结果为dex的id)。 用法：dex.loadDex("文件") 示例：dex.loadDex("/sdcard/classes.dex")
+        dex.execMethod() --调用dex(注意：第五个参数是多参数，方法多少个参数就填多少个在后面)。 用法：dex.execMethod("dex的id", "是否类实例化", "调用类路径", "方法名", "方法参数") 示例：dex.execMethon(id_list[1],false,"com.test.cs","echo",{"string","测试"},{"int",Test})
+        dex.removeDex() --移除载入dex文件。
+    ]
+    HTTP:[ --服务器操作。
+        http.READ() --读取指定云端文件。 用法：http.READ("网址")
+        http.GET()  --GET请求数据。 用法：http.GET("网址", "访问参数")
+        http.POST() --POST请求数据。 用法：http.POST("网址", "访问参数")
+    ]
+    Web:[ --网页浏览器。
+        web().loadUrl() 用法：web().loadUrl("网址") 示例：web().loadUrl("http://www.baidu.com")
+        web().loadHtml() 用法：web().loadHtml([[HTML代码]]) 示例：web().loadHtml([[<!--STATUS OK--><html> <head><meta http-equiv=content-type content=text/html;charset=utf-8><meta http-equiv=X-UA-Compatible content=IE=Edge><meta content=always name=referrer><link rel=stylesheet type=text/css href=https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/bdorz/baidu.min.css></head> <body link=#0000cc> <div id=wrapper> <div id=head> <div class=head_wrapper> <div class=s_form> <div class=s_form_wrapper> <div id=lg> <img hidefocus=true width=270 height=129> </div> <form id=form name=f action=//www.baidu.com/s class=fm> <input type=hidden name=bdorz_come value=1> <input type=hidden name=ie value=utf-8> <input type=hidden name=f value=8> <input type=hidden name=rsv_bp value=1> <input type=hidden name=rsv_idx value=1> <input type=hidden name=tn value=baidu><span class="bg s_ipt_wr"><input id=kw name=wd class=s_ipt value maxlength=255 autocomplete=off autofocus=autofocus></span><span class="bg s_btn_wr"><input type=submit id=su value=百度一下 class="bg s_btn" autofocus></span> </form> </div> </div> <div id=u1>]])
+    ]
+    GetPhoneInfo:[ --取手机信息。
+        getPhoneInfo().imei --取机身识别码。 用法：getPhoneInfo().imei 示例：print(getPhoneInfo().imei)
+        getPhoneInfo().brand --取机身型类。 用法：getPhoneInfo().brand 示例：print(getPhoneInfo().brand)
+        getPhoneInfo().model --取机身型号。 用法：getPhoneInfo().model 示例：print(getPhoneInfo().model)
+        getPhoneInfo().sdk --取机身SDK编译版本。 用法：getPhoneInfo().sdk 示例：print(getPhoneInfo().sdk)
+        getPhoneInfo().power --取机身屏幕分辨率高宽度。 用法：getPhoneInfo().power 示例：print(getPhoneInfo().power)
+    ]
+    DrawTool:[ --绘制工具。
+        新版本:[
+            newView().removeAllView()
+            newView().invalidate()
+            newView().show()
+            newView().close()
+            disDrawAcc()
+            drawArc()
+            drawBitmap()
+            drawCircle()
+            drawColor()
+            drawLine()
+            drawLines()
+            drawRect()
+            drawText()
+            clipRect()
+            rotate()
+            translate()
+            save()
+            restore()
+            newPaint().setWidth()
+            newPaint().setStyle()
+            newPaint().setColor()
+            newPaint().setTextSize()
+            newPaint().setAntiAlias()
+            loadBitmap().setWidth()
+            loadBitmap().setHeight()
+            loadBitmap().getWH()
+            loadBitmap().remove()
+            closeMTP()
+            getWH()
+            thread()
+        ]
+        旧版本:[
+            drawLine() --绘制线段。 用法：drawLine(线段开头x轴, 线段开头y轴, 线段结尾x轴, 线段结尾y轴) 示例：drawLine(100, 100, 100, 200)
+            drawCircle() --绘制圆形。 用法：drawCircle(圆心x轴, 圆心y轴, 圆半径) 示例：drawCircle(200, 200, 100)
+            drawRect() --绘制方形。 用法：drawRect(方形左上角x坐标, 方形左上角y坐标, 方形右下角x坐标, 方形右下角y坐标) 示例：drawRect(200, 200, 400, 400)
+            drawProgress() --绘制进度条。
+            drawPicture() --绘制原比例大小的图片。 用法：drawPicture(图片文件路径, x轴, y轴) 示例：drawPicture("/sdcard/图片文件.png", 300, 300)
+            drawScaled() --绘制自定义比例的图片。 用法：drawScaled(图片文件路径, x轴, y轴, 设置图片宽度, 设置图片长度) 示例：drawScaled("/sdcard/图片文件.png", 500, 500, 200, 200)
+            drawText() --绘制文本。 用法：drawText(文本内容, x坐标, y坐标) 示例：drawText("Test", 200,200)
+            removeAll() --删除全部绘制内容。 用法：removeAll()
+            removeDraw() --删除指定绘制内容。 用法：removeDraw(绘制内容) 示例：removeDraw(drawText("Test", 200,200))
+            setColor() --设置颜色。 用法：setColor(颜色) 示例：setColor("#FFFF55FF")
+            setOrigin() --设置坐标轴的原点。 用法：setOrigin(x坐标, y坐标) 示例：setOrigin(200,300)
+            setRange() --设置全部绘制内容的最大显示范围(注意：设置显示范围的形状为方形)。 示例：setRange(方形的左上角x坐标, 方形的左上角y坐标, 方形的右下角x坐标, 方形的右下角y坐标) 示例：setRange(100,100,300,300)
+            setSize() --设置绘制文本的大小(注意：只对文本绘制有效)。 用法：setSize(数值) 示例：setSize(20)
+            setStyle() --设置绘制的样式为描边还是填充(注意：只对绘制圆、方形有效)。 用法：setStyle("样式") 示例：一.setStyle("描边") 二.setStyle("填充") 三.setStyle("描边并填充")
+            setWidth() --设置画笔的粗细(注意：对绘制文本无效)。 用法：setWidth(数值) 示例：setWidth(5)
+            updateColor() --更新已绘制颜色。 
+            updateDraw() --更新已绘制内容(注意：一.绘制图片的图片文件不支持更新 二.第二个参数是多参数，函数多少个参数就填多少个在后面)。 用法：updatDraw(已绘制内容, 新绘制内容) 示例：一.updatDraw(drawPicture("/sdcard/图片文件.png", 300, 300), "/sdcard/图片文件.png", 200, 200) 二.updatDraw(drawLine(100, 100, 100, 200), 150, 150, 150, 250)
+            updateText() --更新已绘制文本。 
+        ]
+    ]
+    Tools:[
+        tools.ToHexString() --将字符串转成字节数组。 示例：print(tools.ToHexString("hello","UTF-8"))
+        tools.alertBigText() --屏幕上显示一个大文本提示框。 示例：tools.alertBigText("hello",200,200)
+        tools.allowExecute() --检查文件或文件夹是否可执行，不能执行则修改权限为0755。 示例：print(tools.allowExecute("/sdcard/test.lua"))
+        tools.chmod() --更改文件或文件夹权限。 示例：print(tools.chmod("/sdcard/test.lua",602))
+        tools.compare() --比较两个对象是否相等。 示例：一.print(tools.compare("你","你")) 二：print(tools.compare("你","不"))
+        tools.copyFile() --复制文件。 示例：tools.copyFile("/sdcard/test.lua","/sdcard/test2.lua")
+        tools.crc32() --计算字符串CRC32。 示例：print(tools.crc32("hello"))
+        tools.doubleToTime() --将double数值转时间。 示例：print(tools.doubleToTime('80'))
+        tools.dp2px() --将dp值转换为px值。 示例：print(tools.dp2px(10))
+        tools.dump()
+        tools.exec() --执行二进制文件。 示例：tools.exec("/storage/emulated/0/test.sh","1",true)
+        tools.executeScript() --执行脚本。 示例：print(tools.executeScript("/sdcard/test3.lua",1,"test"))
+        tools.formatFileSize() --格式化文件大小。 示例：一.print(tools.formatFileSize("9999",true)) 二.print(tools.formatFileSize("9999",false))
+        tools.getCacheDir() --获取GG缓存目录。 用法：tools.getCacheDir() 示例：print(tools.getCacheDir())
+        tools.getCacheDirHidden() --获取GG隐藏缓存目录。 用法：tools.getCacheDirHidden() 示例：print(tools.getCacheDirHidden())
+        tools.getDaemonDir() --获取GG守护进程目录。 用法：tools.getDaemonDir() 示例：print(tools.getDaemonDir())
+        tools.getDaemonPath() --获取GG守护进程路径。 用法：tools.getDaemonPath() 示例：print(tools.getDaemonPath())
+        tools.getDataDirSafe() --获取GG数据目录。 用法：tools.getDataDirSafe() 示例：print(tools.getDataDirSafe())
+        tools.getFilesDir() --获取GG文件目录。 用法：tools.getFilesDir() 示例：print(tools.getFilesDir())
+        tools.getFilesDirHidden() --获取GG隐藏文件目录。 用法：tools.getFilesDirHidden() 示例：print(tools.getFilesDirHidden())
+        tools.getFreeMem()
+        tools.getHiddenDir() --获取GG隐藏目录。 用法：tools.getHiddenDir() 示例：print(tools.getHiddenDir())
+        tools.getLogcatFilename() --获取GG的logcat文件路径。用法：tools.getLogcatFilename() 示例：print(tools.getLogcatFilename())
+        tools.getNativePath()
+        tools.getRamSizeKb()
+        tools.getScreenSize() --获取屏幕大小。 用法：tools.getScreenSize() 示例：print(tools.getScreenSize())
+        tools.getSdcardPath() --获取SD卡路径。 用法：tools.getSdcardPath() 示例：print(tools.getSdcardPath())
+        tools.getStubLib()--获取不同架构下(true)=64/32=(false)位库文件。 用法：tools.getStubLib(真假值) 示例：一.print(tools.getStubLib(true)) 二.print(tools.getStubLib(false))
+        tools.hash() --计算字符串哈希值。 用法：tools.hash("字符串","编码类型") 示例：print(tools.hash("6467","MD5"))
+        tools.isLandscape() --判断屏幕是否为横屏。 用法：tools.isLandscape() 示例：print(tools.isLandscape())
+        tools.isPackageInsta() --判断APP是否安装。 用法：tools.isPackageInsta("包名") 示例：print(tools.isPackageInsta("com.android.settings"))
+        tools.isRootMode() --判断是否root取得权限。 用法：tools.isRootMode() 示例：print(tools.isRootMode())
+        tools.isScreenOn() --判断屏幕是否为量屏。 用法：tools.isScreenOn() 示例：print(tools.isScreenOn())
+        tools.isX86() --判断设备是否为x86架构。 用法：tools.isX86() 示例：print(tools.isX86())
+        tools.longToTime() --将long数值转时间。 示例：print(tools.longToTime("80"))
+        tools.openAppInfo() --打开APP详情界面。 示例：print(tools.openAppInfo("com.android.settings"))
+        tools.parseTime() --数值转浮点数。 示例：print(tools.parseTime("80"))
+        tools.prefix()
+        tools.prefixLongHex() --将字符串用0补齐指定位数。 用法：tools.prefixLongHex("位数","字符串") 示例：print(tools.prefixLongHex("3","9"))
+        tools.removeNewLinesChars()
+        tools.restartApp() --重启GG。 用法：tools.restartApp()
+        tools.sendRestartIntent() --发送GG重启程序意图。 用法：tools.sendRestartIntent()
+        tools.toString64()
+        tools.trimDirPath() --去除字符串末尾/符号。 用法：tools.trimDirPath("字符串") 示例：print(tools.trimDirPath("/hello/word/"))
+        tools.tryRoot() --尝试获取Root权限。 用法：tools.tryRoot() 示例：print(tools.tryRoot())
+    ]
+    Toast:[
+        ['black'] = toast.black(obj)黑色的消息提示，局部生效。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['cancel'] = toast.cancel()取消所有消息提示，全局生效,
+        ['crossPage'] = toast.crossPage(obj)跨页面消息提示，将优先使用系统自带消息样式。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['delay'] = toast.delay(obj,time)延时消息提示，消息样式为默认样式。传入两个参数。第一个参数支持string、其他继承CharSequence的字符序列、其他Object
+            第二个参数为延迟时间，单位为毫秒,
+        ['diyShow'] = toast.diyShow(view,text,isGlobals,gravity,xoffset,yoffset,horizontalMargin,verticalMargin)自定义View消息提示，全局或局部生效。
+            view为自定义的布局，View类型，为必传内容，View布局内必须包含一个TextView,这个TextView必须拥有Id=0x0102000b;的Id设置
+            text为消息内容，String类型，不传时消息内容由view决定
+            isGlobals是否设置为全局toast都用这个布局，boolean类型，true为全局，false为局部，不传时默认true
+            gravity为显示重心，int类型，不传时默认为Gravity.CENTER
+            xoffset相对于重心位置的水平（屏幕x轴方向）偏移，int类型，不传时默认为0
+            yoffset相对于重心位置的垂直偏移，int类型，不传时默认为0
+            horizontalMargin水平间距，float类型，不传时默认为0
+            verticalMargin垂直间距，float类型，不传时默认为0,
+        ['error'] = toast.error(obj)错误提示，局部生效。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['hint'] = toast.hint(obj)小提示，局部生效。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['setGravity'] = toast.setGravity(gravity,xoffset,yoffset,horizontalMargin,verticalMargin)设置一个全局生效的消息显示位置。            gravity为显示重心，int类型，不传时默认为Gravity.CENTER
+            xoffset相对于重心位置的水平（屏幕x轴方向）偏移，int类型，不传时默认为0
+            yoffset相对于重心位置的垂直偏移，int类型，不传时默认为0
+            horizontalMargin水平间距，float类型，不传时默认为0
+            verticalMargin垂直间距，float类型，不传时默认为0,
+        ['setMode'] = toast.setMode(int mode)切换消息显示模式，全局生效。传入1表示为队列消息显示模式，消息将挨个排队显示；传入0表示即时消息，只显示最新的一个,
+        ['setStyle'] = toast.setStyle(style)设置一个全局生效的消息样式，style为IToastStyle类型或其子类,
+        ['show'] = toast.show(obj)消息提示，消息停留时间由显示的消息长短自动判断，消息样式为默认样式。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['showLong'] = toast.showLong(obj)长时消息提示，停留时间长，消息样式为默认样式。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['showShort'] = toast.showShort(obj)短时消息提示，停留时间短，消息样式为默认样式。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['success'] = toast.success(obj)成功提示，正确提示，局部生效。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['warn'] = toast.warn(obj)警告提示，局部生效。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+        ['white'] = toast.white(obj)白色的消息提示，局部生效。传入一个参数，该参数支持string、其他继承CharSequence的字符序列、其他Object,
+    ]
+    Zipstr:[
+        zipstr.unCache()
+        zipstr.unNames()
+        zipstr.unNamesCache()
+        zipstr.unZip()
+    ]
+
+已移植函数 (1)
+    gg.searchPointer()
+
+已修复函数 (3)
+    debug.getuservalue()
+    debug.setuservalue()
+    os.execute()
+
+已添加库 (12)
+    Luajava
+    Coroutine
+    File
+    DEX
+    HTTP
+    Web
+    GetPhoneInfo
+    Tools
+    Stack
+    Toast
+    MOD
+    APP
