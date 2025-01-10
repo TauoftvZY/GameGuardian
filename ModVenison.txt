@@ -1,8 +1,6 @@
 2.0.1 ※ZuiYue Final Version
 -修复101.1currentScript反射
--将第三方函数tools.getDaemonDir换为app.daemon
 -优化第三方函数tools.executeScript
--移除第三方函数tools.chmod、tools.copyFile、tools.formatFileSize、tools.getCacheDir、tools.getCacheDirHidden、tools.getDaemonDir、tools.getDaemonPath、tools.getDataDirSafe、tools.getFilesDir、tools.getFilesDirHidden、tools.getHiddenDir
 
 2.0.0
 -划分classes.dex
