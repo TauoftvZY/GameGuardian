@@ -1,4 +1,7 @@
-2.0.1 ※ZuiYue Final Version
+2.0.2 ※ZuiYue Final Version
+-修复第三方函数gg.intent报错
+
+2.0.1
 -修复101.1currentScript反射
 -优化第三方函数tools.executeScript
 
