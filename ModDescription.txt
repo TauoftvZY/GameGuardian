@@ -1,0 +1,406 @@
+Resource Files:
+res/drawable/modified_background.xml -- Floating window background color (black gradient to white)
+res/drawable/modified_button.xml -- Button color (orange)
+res/drawable/modified_popup.xml -- Popup color (red gradient in the top right to blue in the bottom left)
+res/drawable/transparent_button.xml -- Button color (white border, transparent background)
+res/layout/hover_icon_refresh.xml -- Floating window icon refresh
+main_land.xml -- Main screen layout for landscape orientation
+main_port.xml -- Main screen layout for portrait orientation
+
+
+Added Function (325)
+    loadurl() -- Load script code from a URL (request header is optional). Usage: loadurl("url", "request header") Example: loadurl("http://127.0.0.1:5555/test.lua")()
+    loadstring() -- Load script code from a string. Usage: loadstring("string") Example: loadstring("/sdcard/test3.lua")() loadstring("print(1)")()
+    loadres() -- Load a script from resources (the resource must be referenced in dex and arsc). Usage: loadres("directory", "id name")() Example: loadres("drawable/test")() loadres("drawable", "test")()
+    loadassets() -- Load a script from assets. Usage: loadassets("name")() Example: loadassets("test.lua")()
+    image() -- Display an image source. Usage: image("image source") Example: image("https://feeds-drcn.dbankcdn.com/web/1051069525419073/image/3aa0084047b420280dd148cf70eed7c5966692ee_w1479_h714") image("/sdcard/test.png")
+    import() -- Import a package, only supports cloud. Usage: import("url")
+    threadPcall() -- Debugging in a thread (note: you can pass a function, data can be shared).
+    setScreenshots() -- Set screenshot permission. Usage: setScreenshots(true/false) Example: setScreenshots(true) setScreenshots(false)
+    equals() -- Deeply compare tables. Usage: equals({string},{string}) Example: print(equals({1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}))
+    gg.appPath() -- Get the private app path of the installed app. Usage: gg.appPath("package name") Example: print(gg.appPath("com.android.settings"))
+    gg.exit() -- true to exit or false to restart GG, default is true. Usage: gg.exit() gg.exit(false)
+    gg.codeScript() -- Create a thread to execute a script. Usage: gg.codeScript("Lua file") Example: gg.codeScript("/sdcard/test.lua")
+    gg.isVPN() -- Get the system's VPN connection status. Usage: gg.isVPN() Example: print(gg.isVPN())
+    gg.isHTTPdump() -- Check if in packet capture mode via network. Usage: gg.isHTTPdump() Example: print(gg.isHTTPdump())
+    gg.jumpAPP() -- Launch an app. Usage: gg.jumpAPP("package name") Example: gg.jumpAPP("com.android.settings")
+    gg.intent() -- Intent operations, can perform operations like opening a URL, QQ profile window, etc. Usage: gg.intent("code") Example: gg.intent("http://www.baidu.com/") gg.intent("mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=1409330588")
+    gg.gotoBrowser() -- Jump to the system's default browser. Usage: gg.gotoBrowser("url") Example: gg.gotoBrowser("http://www.baidu.com/")
+    gg.goURL() -- Jump to a URL. Usage: gg.goURL("url") Example: gg.goURL("http://www.baidu.com/")
+    gg.QQchat() -- Jump to QQ account chat window. Usage: gg.QQchat("QQ account") Example: gg.QQchat("1409330588")
+    gg.QQgroup() -- Jump to QQ group profile window. Usage: gg.QQgroup("group number") Example: gg.QQgroup("959636476")
+    gg.colorAlert() -- Colored pop-up window, title, text, and buttons can have colored text in HTML format. Usage: gg.colorAlert("title", "content", "button", "button", "button") Example: gg.colorAlert("<font color='#70f3ff'>title</font>", "<font color='#FFFF00'>Test</font>", "Positive Button", "Negative Button", "Neutral Button")
+    gg.colorToast() -- Colored message prompt, can use colored text in HTML format. Usage: gg.colorToast("content") Example: gg.colorToast("<font color='#78AF0101'>Test</font>")
+    gg.diyToast() -- Custom colored message prompt. Usage: gg.diyToast("text", background color value, font color value, font size value, text position value) Example: gg.diyToast("Test\nyes", 0xffff006e, 0xffffffff, 50)
+    gg.playMusic() -- Play audio source. Usage: gg.playMusic("audio source") Example: gg.playMusic("http://ivi.bupt.edu.cn/hls/cctv1.m3u8") gg.playMusic("/sdcard/test.m4a") gg.playMusic("stop") gg.playMusic("pause") gg.playMusic("start")
+    gg.playVideo() -- Play video source. Usage: gg.playVideo("video source") Example: gg.playVideo("http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8") gg.playVideo("/sdcard/test.mp4")
+    gg.ETD() -- Convert E type values to D type.
+    gg.FTD() -- Convert F type values to D type.
+    gg.WTD() -- Convert W type values to D type.
+    gg.XTD() -- Convert X type values to D type.
+    gg.sumAddress() -- Offset calculator (similar to GG’s offset calculator).
+    gg.sumAddressX() -- Address offset.
+    gg.searchPointerX() -- Pointer search.
+    gg.gotoPointer() -- Pointer jump.
+    gg.execSQL() -- Execute SQL statements such as insert, delete, update, and CREATE TABLE. Example: gg.execSQL("/sdcard/1.db", "insert into storage (name, password, qq, id) values('DM', '1038927421', '3147359496', '1')")
+    gg.querySQL() -- SQL database management. Usage: gg.querySQL(file, sql, id) Example: gg.querySQL("/sdcard/1.db", "create table storage(name text, password text, qq text, id text)")
+    gg.shell() -- Execute shell commands. Example: print(gg.shell("uptime -s"))
+    gg.command() -- Execute command commands. Example: print(gg.command("uptime -s"))
+    gg.getRangesList() -- Optimized version of GG's official gg.getRangesList function, where address, internalName, end, start, type, state, etc., can be used as filtering conditions. Usage: gg.getRangesList("memory range", "memory type", "process file") Example: print(gg.getRangesList({internalName = '^/data/*lib*.so$', state = 'Ca', type = 'rw'}))
+    gg.getConfig() -- Get GG configuration. Usage: gg.getConfig() Example: 1. print(gg.getConfig()) 2. print(gg.getConfig(2131427463))
+    gg.setConfig() -- Set GG configuration. Usage: gg.setConfig(id, value) Example: print(gg.setConfig(2131427463, 2|4))
+    gg.getProcess() -- Get processes. Usage: gg.getProcess() Example: print(gg.getProcess())
+    gg.setProcess() -- Set process. Usage: gg.setProcess("package name") Example: gg.setProcess("com.android.systemui")
+    gg.setProcessX() -- Set process (note: it only pops up a selection window). Usage: gg.setProcessX() Example: gg.setProcessX()
+    gg.getWindowOrientation() -- Get device screen orientation. Usage: gg.getWindowOrientation() Example: print(gg.getWindowOrientation())
+    gg.getSign -- Get GG signature MD5 value. Usage: gg.getSign Example: print(gg.getSign)
+    gg.getSignatures() -- Get GG signature public key value. Usage: gg.getSignatures() Example: print(gg.getSignatures())
+    gg.getRaw() -- Copy GG's raw resources.
+    gg.ExclusiveoutputG() -- Save search results to a file. Usage: print(gg.ExclusiveoutputG("/sdcard/gg_output.txt"))
+    gg.searchChoice() -- Search dialog. Usage: gg.searchChoice({characters}, "title") Example: gg.searchChoice({"number1", "number2", "number3"}, "test")
+    gg.getAdressString() -- Get the string value at a memory address. Usage: gg.getAdressString(address, offset) Example: print(gg.getAdressString("0xC0D97D18", "0x8"))
+    gg.getAdressJavaString() -- Get the value of a specified Java string object. Usage: gg.getAdressJavaString(address, offset) Example: print(gg.getAdressJavaString("0xC0D301AC", "0x4"))
+    gg.getAddressUTF() -- Read a string by address length. Example: 1. print(gg.getAddressUTF(0xBA341DC0, 5)) 2. print(gg.getAddressUTF(0xBA341DC0, 2048, "UTF-16LE"))
+    gg.getUTF() -- Get a string expression from consecutive addresses. Example: 1. print(gg.getUTF("HEX", 2)) 2. print(gg.getUTF("HEX+UTF-8", gg.getResults(10)))
+    gg.getProcessInfo() -- Get detailed information of a process. Usage: gg.getProcessInfo(cmdLine) Example: print(gg.getProcessInfo(gg.getProcess()[1]['cmdLine']))
+    gg.getAppInfo() -- Get detailed application information. Usage: gg.getAppInfo(cmdLine) Example: print(gg.getAppInfo(gg.getProcess()[1]['cmdLine']))
+    gg.offsetString()
+    gg.offsetJavaString()
+    string.bytes() -- Convert byte type to string. Usage: string.bytes(byteValue, "encoding format") Example: print(string.bytes({[1]=84, [2]=0, [3]=101, [4]=0, [5]=115, [6]=0, [7]=116, [8]=0}, "UTF-16LE"))
+    string.AES() -- AES encryption and decryption. Usage: string.AES("string", "16-character key", "mode") Example: 1. print(string.AES("GG养佬院", "d5?;,.)(j+=@<>/&", "en")) 2. print(string.AES("A082F9228BF1B941A20B273C7B6FE2B4", "d5?;,.)(j+=@<>/&", "de"))
+    string.RC4() -- RC4 encryption and decryption. Usage: string.RC4("string", "key", "mode") Example: 1. print(string.RC4("GG养佬院", "d5?;,.)(j+=@<>/&", "en")) 2. print(string.RC4("DA5BB3FC4ABEACF0", "d5?;,.)(j+=@<>/&", "de"))
+    string.baseCode() -- Base64 encoding and decoding. Usage: string.baseCode("string", "mode") Example: 1. print(string.baseCode("Test", "en")) 2. print(string.baseCode("VGVzdA==", "de"))
+    string.urlCode() -- URL encoding and decoding. Usage: string.urlCode("string", "mode") Example: 1. print(string.urlCode("测试", "en")) 2. print(string.urlCode("%E6%B5%8B%E8%AF%95", "de"))
+    string.decBin() -- Convert decimal to binary (note: supports padding).
+    string.binDec() -- Convert binary to decimal.
+    string.getUID() -- Generate a fixed-length random string for different devices. Usage: string.getUID() Example: print(string.getUID())
+    string.getHash() -- Get the hash value of a string. Usage: string.getHash("string") Example: print(string.getHash("Hello World"))
+    string.getMD() -- Generate hash codes, supports MD5, SHA, SHA1, SHA256, SHA384, SHA512. Usage: 1. string.getMD("string", "encoding format", "algorithm") 2. string.getMD("file", "algorithm") Example: 1. print(string.getMD("测试Test", "UTF-8", "MD5")) 2. print(string.getMD("/sdcard/test.txt", "SHA"))
+    string.similarity() -- Compare the similarity of two strings. Usage: string.similarity("string", "string") Example: print(string.similarity("GG养佬院", "养老院"))
+    string.split() -- Split string. Usage: string.split("string", "separator") Example: string.split("123;2488;283", ";")
+    string.equals() -- Compare if two strings are equal, ignoring case. Example: print(string.equals("world", "World"))
+    string.compare() -- Compare the relationship between two strings. Example: print(string.compare("hello", "world"))
+    string.trim() -- Remove leading and trailing spaces from a string. Example: print("|" .. string.trim("     Hello World     ") .. "|")
+    string.isDigit() -- Check if the string is composed only of digits. Example: print(string.isDigit("11"))
+    string.toCharArray() -- Convert string to character array. Example: print(string.toCharArray("GG养佬院"))
+    string.setCharAt() -- Modify characters at the specified position in a string. Example: print(string.setCharAt("hello world", 4, "nh"))
+    string.isUpper() -- Check if the string is entirely in uppercase. Example: print(string.isUpper("FD"))
+    string.intern() -- Return the canonical form of the string. Example: print(string.intern("hello"))
+    string.insert() -- Insert specified content after the specified position in the original text. Example: print(string.insert("hello world", 5, "你好"))
+    string.toLower() -- Convert to lowercase.
+    string.toUpper() -- Convert to uppercase.
+    string.hashCode() -- Get the hash value of the string. Example: print(string.hashCode("hello"))
+    string.startsWith() -- Match the beginning of the string. Usage: print(string.startsWith("1kllo", "1"))
+    string.endsWith() -- Match the end of the string. Example: print(string.endsWith("hello", "o"))
+    string.newString() -- Convert byte array to string. Example: print(string.newString({72, 101, 108, 108, 111}, "UTF-8"))
+    string.delet() -- Delete characters in a range. Example: print(string.delet("Hello, World!", 5, 7))
+    string.isLower() -- Check if the string is entirely in lowercase. Example: print(string.isLower("hh"))
+    string.isLetter() -- Check if the string is composed only of letters. Example: print(string.isLetter("FD"))
+    string.replace() -- Replace specified content with new content. Example: print(string.replace("hello", "l", "L"))
+    string.charset() -- Character set conversion. Usage: string.charset("string", "encoding type") Example: print(string.charset("hello", "GB2312"))
+    string.jsonFormat() -- Format JSON.
+    table.json() -- Convert JSON to table.
+    table.getn() -- Get the actual length of the table. Usage: table.getn({values}) Example: table.getn({[{}]=3, a=1, b=2, nil, 3, 5, 7, 50})
+    table.MaxN:[ -- Find the maximum number in a table.
+        table.MaxN().M Usage: table.MaxN({values}).M Example: print("Maximum value: " .. table.MaxN({1,1,2,223,4,5,6,7,8,2,3,4,5,2,9,10,34,5,6}).M)
+        table.MaxN().N Usage: table.MaxN({values}).N Example: print("Maximum value position: " .. table.MaxN({1,1,2,223,4,5,6,7,8,2,3,4,5,2,9,10,34,5,6}).N)
+    ]
+    table.removeRepetition() -- Remove duplicate elements in a table. Usage: table.removeRepetition({characters}) Example: print(table.removeRepetition({"ushd", 1, 3, 8, 5, 4, 23345, 1, 2, 3, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 3, {1, 2, 3}, {"tyyy", "uggh"}, {1, 2, 3}}))
+    table.AllPermutation() -- Get all permutations. Example: print(table.AllPermutation({1, 3, 5, 4, 2}, true))
+    table.hasK() -- Check if the table t contains an element with key k (multiple keys can be passed after).
+    table.hasV() -- Check if the table t contains an element with value v (multiple values can be passed after).
+    table.swapKV() -- Swap the keys and values in table t (key <=> value), where the original key becomes the value, and the original value becomes the new key, resulting in a new table.
+    table.vgetK() -- Find all elements in table t with value v and return the corresponding keys.
+    math.gcd() -- Calculate the greatest common divisor (GCD). Example: print(math.gcd(12, 36))
+    File:[
+        file.check() -- Checks the file type (result: 0 for non-existent path or file, 1 for file, 2 for directory). Usage: file.check("file") Example: print(file.check("/sdcard"))
+        file.chmod() -- Changes file read, write, and execute permissions. Usage: file.chmod("file", "octal permission code") Example: print(file.chmod("/sdcard/test.lua", 777))
+        file.copy() -- Copies a file from path1 to path2, creates parent directory if path2’s parent doesn’t exist. Usage: file.copy("path1", "path2") Example: file.copy("/sdcard/test.lua", "/sdcard/test2.lua")
+        file.create() -- Creates a file or directory. Usage: file.create("path") Example: file.create("/sdcard/test")
+        file.delete() -- Deletes a file based on rules (the third parameter is optional; when mode is file.TYPE_CHILD, the third parameter indicates depth). Usage: file.delete("path", mode, "regex or depth") Example: 1. file.delete("/sdcard/test", file.TYPE_ALL) 2. file.delete("/sdcard/test/", file.TYPE_FILE) 3. file.delete("/sdcard/test/", file.TYPE_DIR) 4. file.delete("/sdcard/test/", file.TYPE_PATH_ENDS, ".txt.xxx.lua") 5. file.delete("/sdcard/test/", file.TYPE_NAME_ENDS, "lua") 6. file.delete("/sdcard/test/", file.TYPE_NAME_STARTS, "xxx") 7. file.delete("/sdcard/test/", file.TYPE_CHILD, 4)
+        file.download() -- Downloads a file from a URL (headers are optional). Usage: file.download("url", "save path", "headers") Example: print(file.download("http://baidu.com/index.html", "/sdcard/baidu.html"))
+        file.exists() -- Checks if the file exists. Usage: file.exists("file") Example: print(file.exists("/sdcard"))
+        file.isdir() -- Checks if it’s a directory. Usage: file.isdir("file") Example: print(file.isdir("/sdcard"))
+        file.isfile() -- Checks if it’s a file. Usage: file.isfile("file") Example: print(file.isfile("/sdcard/test.lua"))
+        file.lastTime() -- Retrieves the last modification time of the file. Usage: file.lastTime("file") Example: print(file.lastTime("/sdcard/test.lua"))
+        file.list() -- Traverses files according to the rule (third parameter is optional; when mode is file.TYPE_CHILD, the third parameter is the depth). Usage: file.list("path", mode, "regex or depth") Example: 1. file.list("/sdcard", file.TYPE_ALL) 2. file.list("/sdcard/", file.TYPE_FILE) 3. file.list("/sdcard/", file.TYPE_DIR) 4. file.list("/sdcard/", file.TYPE_PATH_ENDS, ".txt.xxx.lua") 5. file.list("/sdcard/MT2/apks/", file.TYPE_NAME_ENDS, "lua") 6. file.list("/sdcard/MT2/apks/", file.TYPE_NAME_STARTS, "xxx") 7. file.list("/sdcard/", file.TYPE_CHILD, 4)
+        file.mkdirs() -- Creates multi-level directories. Usage: file.mkdirs("path") Example: print(file.mkdirs("/sdcard/测试/Test"))
+        file.name() -- Retrieves the name of the file. Usage: file.name("path") Example: print(file.name("/sdcard/test.lua"))
+        file.parent() -- Retrieves the parent path of the file. Usage: file.parent("path") Example: print(file.parent("/sdcard/test.lua"))
+        file.read() -- Reads the entire content of the file. Usage: file.read("path") Example: print(file.read("/sdcard/test.lua"))
+        file.rename() -- Renames or moves the file. Usage: file.rename("path1", "path2") Example: file.rename("/sdcard/test.lua", "/sdcard/test2.lua")
+        file.size() -- Retrieves the size of the file or directory. Usage: file.size("path") Example: print(file.size("/sdcard/test.lua"))
+        file.split() -- Splits the file into multiple parts. Usage: file.split("file", parts) Example: print(file.split("/sdcard/test.lua", 2))
+        file.sub() -- Path substring (note: the split value is based on the `/` symbol). Usage: file.sub("string", start, end) Example: 1. print(file.sub("/sdcard/Test/测试.txt", 1, 2)) 2. print(file.sub("/sdcard/Test/测试.txt", 2)) 3. print(file.sub("/sdcard/Test/测试.txt", 2, 3))
+        file.suf() -- Retrieves the file extension. Example: print(file.suf("/sdcard/test.lua"))
+        file.write() -- Writes content to a file. Usage: file.write("path", "content") Example: print(file.write("/sdcard/test.lua", "test"))
+        file.zip() -- Compresses and decompresses zip files. Usage: 1. file.zip(file_to_compress, zip_file_path, "zip") 2. file.zip(file_to_extract, extracted_file_path, password, "unzip") Example: 1. print(file.zip("/sdcard/test.txt", "/sdcard/test.zip", "password", "zip")) 2. print(file.zip("/sdcard/test.zip", "/sdcard/测试/test.txt", "password", "unzip"))
+        file.exec() -- Executes terminal commands, the third parameter indicates whether it's in su mode. Usage: file.exec("command", "parameters", true_or_false) Example: file.exec("touch", "/sdcard/test", true)
+    ]
+    APP:[
+        app.apk -- Retrieves the APK file path of the current modifier. Example: print(app.apk)
+        app.cache -- Retrieves the cache path of the current modifier in Android/data/package_name/cache. Example: print(app.cache)
+        app.cacheHidden -- Retrieves the GG folder created by the current modifier under /data/user/ or /data/data/ cache directory. Example: print(app.cacheHidden)
+        app.dataCache -- Retrieves the cache directory under /data/user/ of the current modifier. Example: print(app.dataCache)
+        app.dataFiles -- Retrieves the files directory under /data/user/ of the current modifier. Example: print(app.dataFiles)
+        app.database -- Retrieves the databases directory under /data/user/ of the current modifier. Example: print(app.database)
+        app.files -- Retrieves the files directory under /Android/data/ of the current modifier. Example: print(app.files)
+        app.filesHidden -- Retrieves the GG folder created by the current modifier under the files directory in /data/user/. Example: print(app.filesHidden)
+        app.hidden -- Retrieves the name of the GG folder created by the current modifier. Example: print(app.hidden)
+        app.name -- Retrieves the application package name of the current modifier. Example: print(app.name)
+        app.obb -- Retrieves the /Android/obb directory of the current modifier. Example: print(app.obb)
+    ]
+    Luajava:[
+        luajava.astable() -- Converts a Java object into a Lua table.
+        luajava.bindClass() -- Binds a Java class.
+        luajava.castOf() -- Converts a Java object to a specified type.
+        luajava.createProxy() -- Creates a proxy object for a Java interface.
+        luajava.instanceOf() -- Checks if an object is an instance of a specified type.
+        luajava.loadLib() -- Loads a third-party library.
+        luajava.loadDex() -- Loads a Dex file.
+        luajava.methods() -- Retrieves all methods of a Java class.
+        luajava.getMethods() -- Retrieves the public methods of a Java class.
+        luajava.new() -- Instantiates a Java class.
+        luajava.newInstance() -- Creates a Java object via a constructor. Usage: luajava.newInstance(fully_qualified_class_name, [constructor_args (variable arguments)])
+        luajava.toArray() -- Converts a Lua table into a Java array.
+    ]
+    MOD:[
+        javac()
+        todex()
+        luajava.ids --print(luajava.ids)
+        package.path --print(package.path)
+        luajava.jarpath --print(luajava.jarpath)
+        luajava.logpath --print(luajava.logpath)
+        luajava.classpath --print(luajava.classpath)
+        luajava.methodProxy()
+        instanceof()
+        loadbitmap()
+        loadXml()
+        loaddrawable()
+        compile()
+        import
+        gc()
+        copyFile()
+        context --print(context)
+        activity --print(activity)
+        string.random() --print(string.random())
+        loadXml()
+        Lock.Log()
+        Lock.Main()
+        Lock.Ui()
+        Lock.Write()
+        Lock.unLog()
+        Lock.unMain()
+        Lock.unUi()
+        Lock.unWrite()
+    ]
+    Stack:[ --多线程可共享
+        stack.clearAll() -- Clears all content or state.
+        stack.currentThread() -- Retrieves the current executing thread.
+        stack.deleteGlobals() -- Deletes global variables.
+        stack.getGlobals() -- Retrieves the value of global variables.
+        stack.getScriptThread() -- Retrieves the thread of the script.
+        stack.getState() -- Retrieves the state of the script or thread.
+        stack.getValue() -- Retrieves the value of a specific value or variable.
+        stack.interrupt() -- Interrupts the execution of the current thread.
+        stack.isAlive() -- Checks if the thread is alive (i.e., running).
+        stack.isInterrupted() -- Checks if the thread has been interrupted.
+        stack.isable() -- Checks if a feature or option is enabled or available.
+        stack.isempty() -- Checks if a container or data structure is empty.
+        stack.newGlobalsStack() -- Creates a new global variables stack.
+        stack.newScriptMap() -- Creates a new script map.
+        stack.run() -- Executes the script or thread.
+        stack.setGlobals() -- Sets the value of global variables.
+        stack.setValue() -- Sets the value of a specific value or variable.
+        stack.tostring() -- Converts the object into its string representation.
+    ]
+    Coroutine:[ --协程。
+        coroutine.create() -- Creates a new thread.
+        coroutine.resume() -- Starts or resumes the thread.
+        coroutine.running() -- Checks if the thread is running.
+        coroutine.status() -- Retrieves the status of the thread.
+        coroutine.wrap() -- Creates a new thread (Note: each call continues the thread).
+        coroutine.yield() -- Suspends the thread.
+    ]
+    DEX:[ --dex操作。
+        dex.loadDex() -- Loads a dex file (Note: the result is the dex ID). Usage: dex.loadDex("file") Example: dex.loadDex("/sdcard/classes.dex")
+        dex.execMethod() -- Executes a method from dex (Note: the fifth parameter accepts multiple arguments). Usage: dex.execMethod("dex ID", "instance class", "class path", "method name", "method parameters") Example: dex.execMethod(id_list[1], false, "com.test.cs", "echo", {"string", "test"}, {"int", Test})
+        dex.removeDex() -- Removes the loaded dex file.
+    ]
+    HTTP:[ --服务器操作。
+        http.READ() -- Reads a file from the cloud. Usage: http.READ("URL")
+        http.GET() -- Sends a GET request. Usage: http.GET("URL", "parameters")
+        http.POST() -- Sends a POST request. Usage: http.POST("URL", "parameters")
+    ]
+    Web:[ --网页浏览器。
+        web().loadUrl() -- Loads a URL. Usage: web().loadUrl("URL") Example: web().loadUrl("http://www.baidu.com")
+        web().loadHtml() -- Loads HTML content. Usage: web().loadHtml([[HTML code]]) Example: web().loadHtml([[<!--STATUS OK--> <html> <head><meta http-equiv=content-type content=text/html;charset=utf-8><meta http-equiv=X-UA-Compatible content=IE=Edge><meta content=always name=referrer><link rel=stylesheet type=text/css href=https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/bdorz/baidu.min.css></head> <body link=#0000cc> <div id=wrapper> <div id=head> <div class=head_wrapper> <div class=s_form> <div class=s_form_wrapper> <div id=lg> <img hidefocus=true width=270 height=129> </div> <form id=form name=f action=//www.baidu.com/s class=fm> <input type=hidden name=bdorz_come value=1> <input type=hidden name=ie value=utf-8> <input type=hidden name=f value=8> <input type=hidden name=rsv_bp value=1> <input type=hidden name=rsv_idx value=1> <input type=hidden name=tn value=baidu><span class="bg s_ipt_wr"><input id=kw name=wd class=s_ipt value maxlength=255 autocomplete=off autofocus=autofocus></span><span class="bg s_btn_wr"><input type=submit id=su value=百度一下 class="bg s_btn" autofocus></span> </form> </div> </div> <div id=u1>]])
+    ]
+    GetPhoneInfo:[ --取手机信息。
+        getPhoneInfo().imei -- Retrieves the device's identification code. Usage: getPhoneInfo().imei Example: print(getPhoneInfo().imei)
+        getPhoneInfo().brand -- Retrieves the device's brand. Usage: getPhoneInfo().brand Example: print(getPhoneInfo().brand)
+        getPhoneInfo().model -- Retrieves the device's model. Usage: getPhoneInfo().model Example: print(getPhoneInfo().model)
+        getPhoneInfo().sdk -- Retrieves the device's SDK version. Usage: getPhoneInfo().sdk Example: print(getPhoneInfo().sdk)
+        getPhoneInfo().power -- Retrieves the device's screen resolution width and height. Usage: getPhoneInfo().power Example: print(getPhoneInfo().power)
+    ]
+    DrawTool:[ --绘制工具。
+        新版本:[
+            newView().removeAllView()
+            newView().invalidate()
+            newView().show()
+            newView().close()
+            disDrawAcc()
+            drawArc()
+            drawBitmap()
+            drawCircle()
+            drawColor()
+            drawLine()
+            drawLines()
+            drawRect()
+            drawText()
+            clipRect()
+            rotate()
+            translate()
+            save()
+            restore()
+            newPaint().setWidth()
+            newPaint().setStyle()
+            newPaint().setColor()
+            newPaint().setTextSize()
+            newPaint().setAntiAlias()
+            loadBitmap().setWidth()
+            loadBitmap().setHeight()
+            loadBitmap().getWH()
+            loadBitmap().remove()
+            closeMTP()
+            getWH()
+            thread()
+        ]
+        旧版本:[
+            drawLine() -- Draws a line segment. Usage: drawLine(start x, start y, end x, end y) Example: drawLine(100, 100, 100, 200)
+            drawCircle() -- Draws a circle. Usage: drawCircle(center x, center y, radius) Example: drawCircle(200, 200, 100)
+            drawRect() -- Draws a rectangle. Usage: drawRect(top-left x, top-left y, bottom-right x, bottom-right y) Example: drawRect(200, 200, 400, 400)
+            drawProgress() -- Draws a progress bar.
+            drawPicture() -- Draws an image in its original size. Usage: drawPicture(image path, x, y) Example: drawPicture("/sdcard/image.png", 300, 300)
+            drawScaled() -- Draws an image with a custom scale. Usage: drawScaled(image path, x, y, width, height) Example: drawScaled("/sdcard/image.png", 500, 500, 200, 200)
+            drawText() -- Draws text. Usage: drawText(text content, x, y) Example: drawText("Test", 200, 200)
+            removeAll() -- Removes all drawn content. Usage: removeAll()
+            removeDraw() -- Removes specific drawn content. Usage: removeDraw(drawn content) Example: removeDraw(drawText("Test", 200, 200))
+            setColor() -- Sets the drawing color. Usage: setColor(color) Example: setColor("#FFFF55FF")
+            setOrigin() -- Sets the origin of the coordinate system. Usage: setOrigin(x, y) Example: setOrigin(200, 300)
+            setRange() -- Sets the maximum display range for all drawings (note: the shape is square). Usage: setRange(top-left x, top-left y, bottom-right x, bottom-right y) Example: setRange(100, 100, 300, 300)
+            setSize() -- Sets the size of the text being drawn (note: this only applies to text). Usage: setSize(size) Example: setSize(20)
+            setStyle() -- Sets the drawing style to either outline or fill (note: this only applies to circles and rectangles). Usage: setStyle("style") Example: 1. setStyle("outline") 2. setStyle("fill") 3. setStyle("outline and fill")
+            setWidth() -- Sets the thickness of the brush (note: this does not apply to text). Usage: setWidth(thickness) Example: setWidth(5)
+            updateColor() -- Updates the color of already drawn content.
+            updateDraw() -- Updates the already drawn content (note: 1. Image files do not support updates; 2. The second parameter accepts multiple arguments, so pass as many parameters as the function needs). Usage: updateDraw(drawn content, new content) Example: 1. updateDraw(drawPicture("/sdcard/image.png", 300, 300), "/sdcard/image.png", 200, 200) 2. updateDraw(drawLine(100, 100, 100, 200), 150, 150, 150, 250)
+            updateText() -- Updates the already drawn text.
+        ]
+    ]
+    Tools:[
+        tools.ToHexString() -- Converts a string into a byte array. Usage: tools.ToHexString("hello", "UTF-8") Example: print(tools.ToHexString("hello", "UTF-8"))
+        tools.alertBigText() -- Displays a large text alert on the screen. Usage: tools.alertBigText("hello", 200, 200)
+        tools.allowExecute() -- Checks if a file or folder is executable; if not, changes permissions to 0755. Usage: print(tools.allowExecute("/sdcard/test.lua"))
+        tools.chmod() -- Changes file or folder permissions. Usage: print(tools.chmod("/sdcard/test.lua", 602))
+        tools.compare() -- Compares two objects for equality. Example 1: print(tools.compare("你", "你")) Example 2: print(tools.compare("你", "不"))
+        tools.copyFile() -- Copies a file. Usage: tools.copyFile("/sdcard/test.lua", "/sdcard/test2.lua")
+        tools.crc32() -- Calculates the CRC32 of a string. Usage: print(tools.crc32("hello"))
+        tools.doubleToTime() -- Converts a double value to time. Usage: print(tools.doubleToTime('80'))
+        tools.dp2px() -- Converts dp to px. Usage: print(tools.dp2px(10))
+        tools.dump() -- Dumps the current stack trace or data.
+        tools.exec() -- Executes a binary file. Usage: tools.exec("/storage/emulated/0/test.sh", "1", true)
+        tools.executeScript() -- Executes a script. Example 1: tools.executeScript("/sdcard/test3.lua")() Example 2: tools.executeScript("print(1)")()
+        tools.formatFileSize() -- Formats file size. Example 1: print(tools.formatFileSize("9999", true)) Example 2: print(tools.formatFileSize("9999", false))
+        tools.getCacheDir() -- Gets the GG cache directory. Usage: print(tools.getCacheDir())
+        tools.getCacheDirHidden() -- Gets the GG hidden cache directory. Usage: print(tools.getCacheDirHidden())
+        tools.getDaemonDir() -- Gets the GG daemon directory. Usage: print(tools.getDaemonDir())
+        tools.getDaemonPath() -- Gets the GG daemon path. Usage: print(tools.getDaemonPath())
+        tools.getDataDirSafe() -- Gets the GG data directory. Usage: print(tools.getDataDirSafe())
+        tools.getFilesDir() -- Gets the GG files directory. Usage: print(tools.getFilesDir())
+        tools.getFilesDirHidden() -- Gets the GG hidden files directory. Usage: print(tools.getFilesDirHidden())
+        tools.getFreeMem() -- Gets the available memory.
+        tools.getHiddenDir() -- Gets the GG hidden directory. Usage: print(tools.getHiddenDir())
+        tools.getLogcatFilename() -- Gets the GG logcat file path. Usage: print(tools.getLogcatFilename())
+        tools.getNativePath() -- Gets the native path.
+        tools.getRamSizeKb() -- Gets the RAM size in KB.
+        tools.getScreenSize() -- Gets the screen size. Usage: print(tools.getScreenSize())
+        tools.getSdcardPath() -- Gets the SD card path. Usage: print(tools.getSdcardPath())
+        tools.getStubLib() -- Gets the library file for different architectures (true for 64-bit, false for 32-bit). Usage: print(tools.getStubLib(true)) Example 2: print(tools.getStubLib(false))
+        tools.hash() -- Calculates the hash value of a string. Usage: tools.hash("string", "encoding type") Example: print(tools.hash("6467", "MD5"))
+        tools.isLandscape() -- Checks if the screen is in landscape mode. Usage: print(tools.isLandscape())
+        tools.isPackageInsta() -- Checks if an app is installed. Usage: print(tools.isPackageInsta("com.android.settings"))
+        tools.isRootMode() -- Checks if root access is available. Usage: print(tools.isRootMode())
+        tools.isScreenOn() -- Checks if the screen is on. Usage: print(tools.isScreenOn())
+        tools.isX86() -- Checks if the device uses x86 architecture. Usage: print(tools.isX86())
+        tools.longToTime() -- Converts a long value to time. Usage: print(tools.longToTime("80"))
+        tools.openAppInfo() -- Opens the app details page. Usage: print(tools.openAppInfo("com.android.settings"))
+        tools.parseTime() -- Converts a numeric value to a float. Usage: print(tools.parseTime("80"))
+        tools.prefix() -- Adds a prefix to a string.
+        tools.prefixLongHex() -- Adds leading zeros to a string to a specific length. Usage: tools.prefixLongHex("3", "9") Example: print(tools.prefixLongHex("3", "9"))
+        tools.removeNewLinesChars() -- Removes newline characters from a string.
+        tools.restartApp() -- Restarts GG. Usage: tools.restartApp()
+        tools.sendRestartIntent() -- Sends a restart intent for GG. Usage: tools.sendRestartIntent()
+        tools.toString64() -- Converts to a 64-bit string.
+        tools.trimDirPath() -- Removes trailing slashes from a directory path. Usage: tools.trimDirPath("string") Example: print(tools.trimDirPath("/hello/word/"))
+        tools.tryRoot() -- Attempts to gain root access. Usage: print(tools.tryRoot())
+    ]
+    Toast:[
+        ['black'] = toast.black(obj) Black message prompt, effective locally. The parameter can be a string, other CharSequence objects, or other objects.
+        ['cancel'] = toast.cancel() Cancel all message prompts, effective globally.
+        ['crossPage'] = toast.crossPage(obj) Cross-page message prompt, system's default message style will be used. The parameter can be a string, other CharSequence objects, or other objects.
+        ['delay'] = toast.delay(obj, time) Delayed message prompt, default style for the message. Two parameters are passed. The first can be a string, other CharSequence objects, or other objects.
+            The second is the delay time in milliseconds.
+        ['diyShow'] = toast.diyShow(view, text, isGlobals, gravity, xoffset, yoffset, horizontalMargin, verticalMargin) Custom view message prompt, effective globally or locally.
+            The view is the custom layout, which is required and must contain a TextView with the ID=0x0102000b.
+            Text is the message content, of type String. If not passed, the content will be decided by the view.
+            isGlobals indicates whether to use this layout globally for all toasts, of type boolean, true for global, false for local.
+            The default is true if not passed. gravity defines the display center, of type int, default is Gravity.CENTER.
+            xoffset is the horizontal offset from the center, of type int, default is 0. yoffset is the vertical offset from the center, of type int, default is 0.
+            horizontalMargin is the horizontal margin, of type float, default is 0. verticalMargin is the vertical margin, of type float, default is 0.
+        ['error'] = toast.error(obj) Error message prompt, effective locally. The parameter can be a string, other CharSequence objects, or other objects.
+        ['hint'] = toast.hint(obj) Hint message prompt, effective locally. The parameter can be a string, other CharSequence objects, or other objects.
+        ['setGravity'] = toast.setGravity(gravity, xoffset, yoffset, horizontalMargin, verticalMargin) Set a globally effective message display position.
+            gravity is the center of display, of type int, default is Gravity.CENTER. xoffset is the horizontal offset from the center, of type int, default is 0.
+            yoffset is the vertical offset from the center, of type int, default is 0. horizontalMargin is the horizontal margin, of type float, default is 0.
+            verticalMargin is the vertical margin, of type float, default is 0.
+        ['setMode'] = toast.setMode(int mode) Switch the message display mode, effective globally. Pass 1 for queue message mode, where messages are displayed one by one.
+            Pass 0 for instant message mode, which only shows the latest message.
+        ['setStyle'] = toast.setStyle(style) Set a globally effective message style, where style is of type IToastStyle or its subclass.
+        ['show'] = toast.show(obj) Message prompt, message display duration is determined by the length of the displayed message, using the default style. 
+            The parameter can be a string, other CharSequence objects, or other objects.
+        ['showLong'] = toast.showLong(obj) Long message prompt, with a longer display duration, using the default style. 
+            The parameter can be a string, other CharSequence objects, or other objects.
+        ['showShort'] = toast.showShort(obj) Short message prompt, with a shorter display duration, using the default style. 
+            The parameter can be a string, other CharSequence objects, or other objects.
+        ['success'] = toast.success(obj) Success message prompt, correct message prompt, effective locally. The parameter can be a string, other CharSequence objects, or other objects.
+        ['warn'] = toast.warn(obj) Warning message prompt, effective locally. The parameter can be a string, other CharSequence objects, or other objects.
+        ['white'] = toast.white(obj) White message prompt, effective locally. The parameter can be a string, other CharSequence objects, or other objects.
+    ]
+    Zipstr:[
+        zipstr.unCache()
+        zipstr.unNames()
+        zipstr.unNamesCache()
+        zipstr.unZip()
+    ]
+
+Ported Functions (1)
+    gg.searchPointer()
+
+Fixed Functions (3)
+    debug.getuservalue()
+    debug.setuservalue()
+    os.execute()
+
+Added Libraries (12)
+    Luajava
+    Coroutine
+    File
+    DEX
+    HTTP
+    Web
+    GetPhoneInfo
+    Tools
+    Stack
+    Toast
+    MOD
+    APP

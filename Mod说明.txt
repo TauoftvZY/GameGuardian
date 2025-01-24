@@ -292,9 +292,9 @@ main_port.xml --主页竖屏时显示
             setSize() --设置绘制文本的大小(注意：只对文本绘制有效)。 用法：setSize(数值) 示例：setSize(20)
             setStyle() --设置绘制的样式为描边还是填充(注意：只对绘制圆、方形有效)。 用法：setStyle("样式") 示例：一.setStyle("描边") 二.setStyle("填充") 三.setStyle("描边并填充")
             setWidth() --设置画笔的粗细(注意：对绘制文本无效)。 用法：setWidth(数值) 示例：setWidth(5)
-            updateColor() --更新已绘制颜色。 
+            updateColor() --更新已绘制颜色。
             updateDraw() --更新已绘制内容(注意：一.绘制图片的图片文件不支持更新 二.第二个参数是多参数，函数多少个参数就填多少个在后面)。 用法：updatDraw(已绘制内容, 新绘制内容) 示例：一.updatDraw(drawPicture("/sdcard/图片文件.png", 300, 300), "/sdcard/图片文件.png", 200, 200) 二.updatDraw(drawLine(100, 100, 100, 200), 150, 150, 150, 250)
-            updateText() --更新已绘制文本。 
+            updateText() --更新已绘制文本。
         ]
     ]
     Tools:[
