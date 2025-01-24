@@ -8,7 +8,11 @@ main_land.xml --主页横屏时显示
 main_port.xml --主页竖屏时显示
 
 
-已添加函数 (320)
+已添加函数 (325)
+    loadurl() --网址加载脚本代码(请求头可以不填)。 用法：loadurl("字符","请求头") 示例：一.loadurl("http://127.0.0.1:5555/test.lua")()
+    loadstring() --字符串加载脚本代码。 用法：loadstring("字符") 示例：一.loadstring("/sdcard/test3.lua")() 二.loadstring("print(1)")()
+    loadres() --从res加载脚本(资源需在dex和arsc添加引用)。 用法：一.loadres("目录", "id名称")() 二.loadres("目录/id名称")() 示例：一.loadres("drawable/test")() 二.loadres("drawable", "test")()
+    loadassets() --从assets加载脚本。 用法：loadassets("名称")() 用法：loadassets("test.lua")()
     image() --播放图片源。 用法：image("图片源") 示例：一.image("https://feeds-drcn.dbankcdn.com/web/1051069525419073/image/3aa0084047b420280dd148cf70eed7c5966692ee_w1479_h714") 二.image("/sdcard/test.png")
     import() --导包操作，仅支持云端。 用法：import("网址")
     threadPcall() --线程调试。(注意：可传入function，数据可共享)。
@@ -114,7 +118,7 @@ main_port.xml --主页竖屏时显示
         file.copy() --从路径1拷贝文件到路径2，当路径2的父目录不存在时会创建父目录。 用法：file.copy("路径","路径") 示例：file.copy("/sdcard/test.lua","/sdcard/test2.lua")
         file.create() --创建文件或文件夹。 用法：file.create("路径") 示例：file.create("/sdcard/test")
         file.delete() --按规则删除文件(参数三可不输入，当参数二模式传入为file.TYPE_CHILD时参数三则会是深度)。 用法：file.delete("路径",模式,"正则表达式或深度") 示例：一.file.delete("/sdcard/test", file.TYPE_ALL) 二.file.delete("/sdcard/test/", file.TYPE_FILE) 三.file.delete("/sdcard/test/", file.TYPE_DIR) 四.file.delete("/sdcard/test/", file.TYPE_PATH_ENDS, ".txt.xxx.lua") 五.file.delete("/sdcard/test/", file.TYPE_NAME_ENDS, "lua") 六.file.delete("/sdcard/test/", file.TYPE_NAME_STARTS, "xxx") 七.file.delete("/sdcard/test/", file.TYPE_CHILD, 4)
-        file.download() --下载网址文件(header可以不填)。 用法：file.download("网址文件","存储文件","header") 示例：print(file.download("http://baidu.com/index.html","/sdcard/baidu.html"))
+        file.download() --下载网址文件(请求头可以不填)。 用法：file.download("网址文件","存储文件","请求头") 示例：print(file.download("http://baidu.com/index.html","/sdcard/baidu.html"))
         file.exists() --判断文件是否存在。 用法：file.exists("文件") 示例：print(file.exists("/sdcard"))
         file.isdir() --判断是不是文件夹。 用法：file.isdir("文件") 示例：print(file.isdir("/sdcard"))
         file.isfile() --判断是不是文件。 用法：file.isfile("文件") 示例：print(file.isfile("/sdcard/test.lua"))
@@ -171,6 +175,7 @@ main_port.xml --主页竖屏时显示
         luajava.methodProxy()
         instanceof()
         loadbitmap()
+        loadXml()
         loaddrawable()
         compile()
         import
@@ -304,7 +309,7 @@ main_port.xml --主页竖屏时显示
         tools.dp2px() --将dp值转换为px值。 示例：print(tools.dp2px(10))
         tools.dump()
         tools.exec() --执行二进制文件。 示例：tools.exec("/storage/emulated/0/test.sh","1",true)
-        tools.executeScript() --执行脚本。 示例：一.tools.executeScript("/sdcard/test3.lua") 二.tools.executeScript("print(1)")
+        tools.executeScript() --执行脚本。 示例：一.tools.executeScript("/sdcard/test3.lua")() 二.tools.executeScript("print(1)")()
         tools.formatFileSize() --格式化文件大小。 示例：一.print(tools.formatFileSize("9999",true)) 二.print(tools.formatFileSize("9999",false))
         tools.getCacheDir() --获取GG缓存目录。 用法：tools.getCacheDir() 示例：print(tools.getCacheDir())
         tools.getCacheDirHidden() --获取GG隐藏缓存目录。 用法：tools.getCacheDirHidden() 示例：print(tools.getCacheDirHidden())

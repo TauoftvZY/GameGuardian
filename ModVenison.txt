@@ -1,4 +1,13 @@
-2.0.2 ※ZuiYue Final Version
+2.0.5 ※ZuiYue Final Version 🎉
+2025年接近新春的日子，迎来最终版本。这个版本，它已接近我最初的愿景🥰。感谢你们一路以来的支持！
+-新增文件列表选取dex文件颜色
+-优化文件选取列表备选颜色
+-修复ScriptUtils对反编译、转储所有代码加载、记录大多数脚本调用，失效问题
+-修复LuaBitmap的globals重试反射值
+-修复86.5workDir
+-优化101.1LuaBitmap反射顺序
+
+2.0.2
 -修复第三方函数gg.intent报错
 
 2.0.1
@@ -8,7 +17,7 @@
 2.0.0
 -划分classes.dex
 -将第三方函数file.mkdir换为file.mkdirs
--添加第三方函数todex、javac、loaddrawable、compile、loadXml、loadres、loadstring、loadurl、file.chmod、file.copy、file.create、file.create、file.delete、file.fileSuffix、file.isdir、file.isfile、file.name、file.parent、file.rename、file.split、file.sub、file.write
+-添加第三方函数todex、javac、loaddrawable、compile、loadXml、loadres、loadassets、loadstring、loadurl、file.chmod、file.copy、file.create、file.create、file.delete、file.fileSuffix、file.isdir、file.isfile、file.name、file.parent、file.rename、file.split、file.sub、file.write
 -优化第三方函数gg.intent、file.check、file.download、file.exists、file.lastTime、file.list、file.read、file.size、luajava.methodProxy、import
 -移除第三方函数file.getAppPath、file.listFile、file.listFolder、file.path、file.pathEnd
 -更新net库
@@ -56,7 +65,7 @@
 
 1.5
 -将第三方函数file.downloadFile换为file.download、equals换为table.equals、file.execFile换为file.exec、file.readFile换为file.read、gg.getRangesListX覆盖为gg.getRangesList
--修复101第三方函数table.removeRepetition报错
+-修复101.1第三方函数table.removeRepetition报错
 -修复第三方函数gg.getProcess刷新列表
 -优化部分string库函数、第三方函数gg.setProcess、第三方函数gg.diyToast、第三方函数gg.setConfig、官方函数gg.getRangesList
 -更改第三方函数gg.exit函数传入类型
