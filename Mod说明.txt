@@ -143,7 +143,7 @@ main_port.xml --主页竖屏时显示
         app.cacheHidden --当前修改器在/data/user/或者/data/data/目录下cache文件中创建的GG-文件夹。 示例：print(app.cacheHidden)
         app.dataCache --当前修改器的/data/user/下的cache目录。 示例：print(app.dataCache)
         app.dataFiles --当前修改器的/data/user/下的files目录。 示例：print(app.dataFiles)
-        app.databases --当前修改器的/data/user/下的databases目录。 示例：print(app.databases)
+        app.database --当前修改器的/data/user/下的databases目录。 示例：print(app.database)
         app.files --当前修改器的/Android/data/下的files目录。 示例：print(app.files)
         app.filesHidden --当前修改器在/data/user/下files目录中创建的GG-文件夹。 示例：print(app.filesHidden)
         app.hidden --当前修改器创建的GG-文件夹的名字。 示例：print(app.hidden)
